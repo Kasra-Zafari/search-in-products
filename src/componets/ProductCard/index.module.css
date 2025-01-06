@@ -1,3 +1,12 @@
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
 .card {
     text-align: center;
     border: 1px solid black;
@@ -6,6 +15,7 @@
     height: auto;
     padding: 10px;
     margin: 2rem;
+    flex: 0 1 250px;
 }
 
 .card:hover {
@@ -34,6 +44,6 @@
 .title{
     height: 50px
 }
-h2{
+h2,h5{
     text-align: center;
 }

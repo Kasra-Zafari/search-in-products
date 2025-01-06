@@ -5,7 +5,7 @@ import { useState } from "react"
 
 function App() {
 
-  const [selectedCategory, setSelectedCategory] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("electronics")
 
   return (
     <>
