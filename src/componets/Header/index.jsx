@@ -1,11 +1,10 @@
 import classes from "./index.module.css"
 import React, { useEffect, useState } from "react"
 
-const Header = () => {
+const Header = (props) => {
 
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [selectedCategory, setSelectedCategory] = useState("")
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
@@ -17,7 +16,7 @@ const Header = () => {
 
 
     const handleSelectCategory = (item) => {
-        setSelectedCategory(item);
+        props.setSelectedCategory(item);
     }
 
 

@@ -1,0 +1,39 @@
+.card {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 250px;
+    height: auto;
+    padding: 10px;
+    margin: 2rem;
+}
+
+.card:hover {
+    border: 1px solid #ffae00;
+}
+
+.card:hover .price1 {
+    color: #ffae00;
+}
+
+.img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.caption {
+    text-align: left;
+}
+
+.title{
+    height: 50px
+}
+h2{
+    text-align: center;
+}
