@@ -20,9 +20,14 @@ const ProductCard = (props) => {
         }
     }, [props.selectedCategory]);
 
-    const handleSearch = () => {
-        
+    const handleSearch = (event) => {
+        setSearchBox(event.target.value);
     }
+
+
+    const filteredProducts = products.filter((product) => // **خط 28-30: فیلتر محصولات**
+        product.title.toLowerCase().includes(searchBox.toLowerCase())
+    );
 
 
     return (
@@ -30,8 +35,9 @@ const ProductCard = (props) => {
             <div className={classes.search}>
                 <input
                     type="text"
-                    placeholder="Search by product name..." />
-                <button onClick={handleSearch}>🔍</button>
+                    placeholder="Search by product name..."
+                    value={searchBox}
+                    onChange={handleSearch} />
             </div>
 
             <h2>{props.selectedCategory}</h2>
@@ -39,7 +45,7 @@ const ProductCard = (props) => {
             {isProductsLoadind && <h5>Products Is Loading...</h5>}
 
             <div className={classes.cardContainer}>
-                {!isProductsLoadind && products.map((product) => (
+                {!isProductsLoadind && filteredProducts.map((product) => (
                     <a key={product.id} href="#">
                         <div className={classes.card}>
                             <div className={classes.img}>
