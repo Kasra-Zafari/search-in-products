@@ -5,7 +5,8 @@ import { useEffect } from "react";
 const ProductCard = (props) => {
 
     const [products, setProducts] = useState([]);
-    const [isProductsLoadind,setIsProductsLoading] = useState(false);
+    const [isProductsLoadind, setIsProductsLoading] = useState(false);
+    const [searchBox, setSearchBox] = useState("");
 
 
     useEffect(() => {
@@ -15,22 +16,34 @@ const ProductCard = (props) => {
                 .then((res) => res.json())
                 .then((data) => { setProducts(data) })
                 .catch((error) => { alert("an error has been ocuured") })
-                .finally(()=>{setIsProductsLoading(false)})
+                .finally(() => { setIsProductsLoading(false) })
         }
-    }, [props.selectedCategory])
+    }, [props.selectedCategory]);
+
+    const handleSearch = () => {
+        
+    }
+
 
     return (
         <>
+            <div className={classes.search}>
+                <input
+                    type="text"
+                    placeholder="Search by product name..." />
+                <button onClick={handleSearch}>🔍</button>
+            </div>
+
             <h2>{props.selectedCategory}</h2>
 
             {isProductsLoadind && <h5>Products Is Loading...</h5>}
 
             <div className={classes.cardContainer}>
-            {!isProductsLoadind && products.map((product) => (
+                {!isProductsLoadind && products.map((product) => (
                     <a key={product.id} href="#">
                         <div className={classes.card}>
                             <div className={classes.img}>
-                                <img src={product.image} alt="" width="120px" />
+                                <img src={product.image} alt="product.image" width="120px" />
                             </div>
                             <div className={classes.caption}>
                                 <h5 className={classes.title}>{product.title}</h5>
@@ -40,7 +53,7 @@ const ProductCard = (props) => {
                             </div>
                         </div>
                     </a>
-            ))}
+                ))}
             </div>
         </>
     )
