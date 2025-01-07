@@ -1,6 +1,7 @@
 import './App.css'
 import Header from './componets/Header'
 import ProductCard from './componets/ProductCard'
+import Footer from './componets/Footer'
 import { useState } from "react"
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <>
       <Header setSelectedCategory={setSelectedCategory}/>
       <ProductCard selectedCategory={selectedCategory}/>
+      <Footer/>
     </>
   )
 }
