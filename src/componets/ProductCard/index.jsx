@@ -11,12 +11,15 @@ const ProductCard = (props) => {
 
     useEffect(() => {
         if (props.selectedCategory) {
+            const controller = new AbortController();
             setIsProductsLoading(true)
-            fetch(`https://fakestoreapi.com/products/category/${props.selectedCategory}`)
+            fetch(`https://fakestoreapi.com/products/category/${props.selectedCategory}`,{signal: controller.signal})
                 .then((res) => res.json())
                 .then((data) => { setProducts(data) })
                 .catch((error) => { alert("an error has been ocuured") })
                 .finally(() => { setIsProductsLoading(false) })
+
+                return()=>{controller.abort()}
         }
     }, [props.selectedCategory]);
 
